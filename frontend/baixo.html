@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baixo - Primeiros Passos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a2d9d5a64f.js" crossorigin="anonymous"></script>
+
+  <style>
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .video-box video {
+      width: 420px;
+      height: 240px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(255, 106, 0, 0.4);
+    }
+
+    #start-btn {
+      background: linear-gradient(90deg, #FFD700, #FFC300);
+      border: none;
+      border-radius: 12px;
+      padding: 15px 40px;
+      font-size: 1.1em;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 214, 0, 0.4);
+    }
+
+    #start-btn:hover {
+      transform: scale(1.08);
+      background: linear-gradient(90deg, #FFEA00, #FFD700);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    }
+
+    .text-column {
+      max-width: 420px;
+      text-align: left;
+    }
+
+    .text-column h2 {
+      color: #FFD700;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #FFD700;
+      padding-left: 10px;
+      margin-top: 15px;
+      color: #ccc;
+    }
+
+    .ia-container {
+      background: #1b1b1b;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 40px auto;
+      width: 85%;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(255, 214, 0, 0.3);
+      text-align: left;
+    }
+
+    #chat {
+      background: #0d0d0d;
+      padding: 15px;
+      border-radius: 10px;
+      height: 200px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    #chat p {
+      margin: 8px 0;
+    }
+
+    #userInput {
+      width: 75%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #2b2b2b;
+      color: #fff;
+    }
+
+    #sendBtn {
+      background: #FFD700;
+      border: none;
+      color: black;
+      border-radius: 8px;
+      padding: 10px 18px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    #sendBtn:hover {
+      background: #FFEA00;
+    }
+
+    .resposta {
+      color: #FFD700;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1>🎵 Música & IA</h1>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h2>Aprende Baixo do Zero 🎸</h2>
+    <p>Descobre o groove e dá ritmo à tua música!</p>
+  </section>
+
+  <main class="main-content">
+    <div class="video-column">
+      <div class="video-box">
+        <video src="videos/baixo.mp4" controls></video>
+      </div>
+      <button id="start-btn">🎶 Vamos começar</button>
+    </div>
+
+    <div class="text-column">
+      <h2>Sobre o instrumento</h2>
+      <p>O baixo é a ponte entre a harmonia e o ritmo. Aprende a sentir a música e a marcar o compasso da canção!</p>
+      <blockquote>“O groove é o coração pulsante de cada melodia.”</blockquote>
+    </div>
+  </main>
+
+  <section id="ia-section" class="ia-container" style="display:none;">
+    <h3>Assistente IA de Música 🧠</h3>
+    <div id="chat">
+      <p class="resposta"><strong>SoundIA:</strong> Fala baixista!! Vamos começar??</p>
+    </div>
+    <input type="text" id="userInput" placeholder="Escreve algo...">
+    <button id="sendBtn">Enviar</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Música & IA — Desenvolvido com paixão 🎶</p>
+  </footer>
+
+  <script>
+    document.getElementById('start-btn').addEventListener('click', () => {
+      document.getElementById('ia-section').style.display = 'block';
+      document.getElementById('ia-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const input = document.getElementById('userInput');
+      const chat = document.getElementById('chat');
+      const userText = input.value.trim();
+      if (userText) {
+        const userMsg = document.createElement('p');
+        userMsg.innerHTML = `<strong>Tu:</strong> ${userText}`;
+        chat.appendChild(userMsg);
+
+        const iaMsg = document.createElement('p');
+        iaMsg.classList.add('resposta');
+        iaMsg.innerHTML = `<strong>IA:</strong> Excelente! Vamos sentir o groove juntos 🎸`;
+        chat.appendChild(iaMsg);
+        input.value = '';
+        chat.scrollTop = chat.scrollHeight;
+      }
+    });
+  </script>
+</body>
+</html>

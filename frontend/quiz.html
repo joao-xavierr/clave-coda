@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - SoundWave Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>SoundWave Music</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <main class="quiz-main">
+        <h2>🎯 Qual instrumento combina mais contigo?</h2>
+        <form id="quizForm">
+            <p>1. Prefere som suave ou marcante?</p>
+            <label><input type="radio" name="q1" value="violao"> Suave</label>
+            <label><input type="radio" name="q1" value="bateria"> Marcante</label>
+            <label><input type="radio" name="q1" value="baixo"> ambos</label>
+
+            <p>2. Prefere Ritmo ou melodia?</p>
+            <label><input type="radio" name="q2" value="bateria"> Ritmo</label>
+            <label><input type="radio" name="q2" value="violao"> Melodia</label>
+            <label><input type="radio" name="q2" value="baixo"> Ambos</label>
+            
+            <p>3. Prefere tocar sozinho ou em grupo?</p>
+            <label><input type="radio" name="q2" value="bateria"> Grupo</label>
+            <label><input type="radio" name="q2" value="violao"> Sozinho</label>
+            <label><input type="radio" name="q2" value="baixo"> Ambos</label>
+
+            <p>4. Gosta de seguir partituras ou criar por ouvido?</p>
+            <label><input type="radio" name="q2" value="bateria"> ambos</label>
+            <label><input type="radio" name="q2" value="violao"> ouvido</label>
+            <label><input type="radio" name="q2" value="baixo"> seguir partituras</label>
+
+            <p>5. Prefere algo portátil ou fixo?</p>
+            <label><input type="radio" name="q2" value="bateria"> fixo</label>
+            <label><input type="radio" name="q2" value="violao"> portatil</label>
+            <label><input type="radio" name="q2" value="baixo"> fixo</label>
+
+            <p>6. Gosta de marcar presença ou acompanhar o som?</p>
+            <label><input type="radio" name="q2" value="bateria"> marcar presença</label>
+            <label><input type="radio" name="q2" value="violao"> acompanhar o som</label>
+            <label><input type="radio" name="q2" value="baixo"> acompanhar o som</label>
+
+            <p>7. Prefere algo com muitas combinações ou simples?</p>
+            <label><input type="radio" name="q2" value="bateria"> muitas combinações</label>
+            <label><input type="radio" name="q2" value="violao"> simples</label>
+            <label><input type="radio" name="q2" value="baixo"> Ambos</label>
+
+<button type="button" class="resultado-btn" onclick="verResultado()">
+🎵 Ver Resultado
+</button>
+
+        </form>
+        <div id="resultadoQuiz" class="resultado"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 SoundWave Music | Desenvolvido por João Pedro Xavier</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
