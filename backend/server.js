@@ -1,50 +1,25 @@
 import express from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import ClientGemini from './client.js';
 
-dotenv.config();
+dotenv.config(); // Inicializa as variáveis de ambiente
 
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 
-// Configurar cliente Gemini com API Key
-const genAI = new GoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
-const model = genAI.getGenerativeModel({ model: process.env.MODEL_ID });
-
-// Rota de chat
-app.post('/api/chat', async (req, res) => {
+app.post('/generate', async (req, res) => {
+  const { prompt } = req.body;
   try {
-    const userMessage = req.body.mensagem;
-
-    const prompt = `
-Tu és a SoundIA 🧠, uma inteligência artificial que ensina bateria de forma divertida, simples e educativa.
-Responde com entusiasmo e dicas práticas de música.
-
-Pergunta do aluno: ${userMessage}
-    `;
-
-    // Chamada para gerar conteúdo
-    const result = await model.generateContent({
-      request: [
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ],
-    });
-
-    // Extrair texto da resposta
-    const resposta = result.output[0].content[0].text || "Não consegui gerar uma resposta 😢";
-
-    res.json({ resposta });
-  } catch (erro) {
-    console.error('❌ ERRO DETALHADO:', erro);
-    res.status(500).json({ resposta: 'Ocorreu um erro ao processar sua mensagem 😢' });
+    const response = await ClientGemini(prompt);
+    res.json({ response });
+  } catch (error) {
+    console.error(error); // Para debugar erros reais
+    res.status(500).json({ error: 'Não conseguimos gerar a resposta' });
   }
 });
 
-// Iniciar servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Servidor Gemini rodando em http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
