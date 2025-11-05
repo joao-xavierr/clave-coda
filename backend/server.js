@@ -1,25 +1,30 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import ClientGemini from './client.js';
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import { ClientGemini } from "./client.js";
 
-dotenv.config(); // Inicializa as variáveis de ambiente
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use(express.json());
-
-app.post('/generate', async (req, res) => {
-  const { prompt } = req.body;
+app.post("/api/gemini", async (req, res) => {
   try {
-    const response = await ClientGemini(prompt);
-    res.json({ response });
+    const { prompt } = req.body;
+
+    if (!prompt) {
+      return res.status(400).json({ error: "Campo 'prompt' é obrigatório." });
+    }
+
+    const resposta = await ClientGemini(prompt);
+    res.json({ resposta });
   } catch (error) {
-    console.error(error); // Para debugar erros reais
-    res.status(500).json({ error: 'Não conseguimos gerar a resposta' });
+    console.error(error);
+    res.status(500).json({ error: "Erro ao processar a solicitação." });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Servidor rodando em http://localhost:${PORT}`));
