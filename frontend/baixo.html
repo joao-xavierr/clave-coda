@@ -8,123 +8,70 @@
   <script src="https://kit.fontawesome.com/a2d9d5a64f.js" crossorigin="anonymous"></script>
 
   <style>
-    .main-content {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 40px;
-      flex-wrap: wrap;
+    /* CHAT + LOADING */
+    .resposta.loading::after {
+      content: ' ⏳';
+      animation: blink 1s infinite;
     }
-
-    .video-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .video-box video {
-      width: 420px;
-      height: 240px;
-      border-radius: 14px;
-      box-shadow: 0 0 20px rgba(255, 106, 0, 0.4);
-    }
-
-    #start-btn {
-      background: linear-gradient(90deg, #FFD700, #FFC300);
-      border: none;
-      border-radius: 12px;
-      padding: 15px 40px;
-      font-size: 1.1em;
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(255, 214, 0, 0.4);
-    }
-
-    #start-btn:hover {
-      transform: scale(1.08);
-      background: linear-gradient(90deg, #FFEA00, #FFD700);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-    }
-
-    .text-column {
-      max-width: 420px;
-      text-align: left;
-    }
-
-    .text-column h2 {
-      color: #FFD700;
-    }
-
-    blockquote {
-      font-style: italic;
-      border-left: 4px solid #FFD700;
-      padding-left: 10px;
-      margin-top: 15px;
-      color: #ccc;
-    }
-
-    .ia-container {
-      background: #1b1b1b;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 40px auto;
-      width: 85%;
-      max-width: 700px;
-      box-shadow: 0 0 20px rgba(255, 214, 0, 0.3);
-      text-align: left;
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
     }
 
     #chat {
-      background: #0d0d0d;
-      padding: 15px;
-      border-radius: 10px;
-      height: 200px;
+      max-height: 300px;
       overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #111;
+      border-radius: 8px;
       margin-bottom: 10px;
     }
 
-    #chat p {
-      margin: 8px 0;
+    #chat p { margin: 5px 0; }
+
+    /* Botões gerais */
+    .area-buttons {
+      margin: 20px 0;
     }
 
-    #userInput {
-      width: 75%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: #2b2b2b;
-      color: #fff;
-    }
-
-    #sendBtn {
-      background: #FFD700;
-      border: none;
-      color: black;
-      border-radius: 8px;
-      padding: 10px 18px;
+    .area-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
-      margin-left: 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #28a745;
+      color: white;
     }
 
-    #sendBtn:hover {
-      background: #FFEA00;
+    .area-buttons button:hover {
+      background-color: #218838;
     }
 
-    .resposta {
-      color: #FFD700;
+    /* Botão de contato */
+    .contato-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      font-size: 18px;
+      background: #ff5f5f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .contato-btn:hover {
+      background: #ff2d2d;
     }
   </style>
 </head>
 
 <body>
   <nav class="navbar">
-    <h1>🎵 Música & IA</h1>
+    <h1>🎵 Clave&Coda music</h1>
     <ul>
       <li><a href="index.html">Início</a></li>
     </ul>
@@ -140,7 +87,12 @@
       <div class="video-box">
         <video src="videos/baixo.mp4" controls></video>
       </div>
-      <button id="start-btn">🎶 Vamos começar</button>
+
+      <button id="start-btn">🎶 Falar com o SoundIA</button>
+
+      <div class="area-buttons">
+        <button id="aprendizado-btn">📚 Ir para Área de Aprendizado</button>
+      </div>
     </div>
 
     <div class="text-column">
@@ -151,41 +103,35 @@
   </main>
 
   <section id="ia-section" class="ia-container" style="display:none;">
-    <h3>Assistente IA de Música 🧠</h3>
-    <div id="chat">
-      <p class="resposta"><strong>SoundIA:</strong> Fala baixista!! Vamos começar??</p>
-    </div>
+    <h3>SoundIA 🧠</h3>
+    <div id="chat"></div>
     <input type="text" id="userInput" placeholder="Escreve algo...">
     <button id="sendBtn">Enviar</button>
   </section>
 
+  <button class="contato-btn" id="contato-instagram">tenha feedback com o criador!</button>
+
   <footer>
-    <p>© 2025 Música & IA — Desenvolvido com paixão 🎶</p>
+    <p>© 2025 Clave&Coda music — Desenvolvido por João Xavier 🎶</p>
   </footer>
 
+  <script src="script.js"></script>
+
   <script>
-    document.getElementById('start-btn').addEventListener('click', () => {
-      document.getElementById('ia-section').style.display = 'block';
-      document.getElementById('ia-section').scrollIntoView({ behavior: 'smooth' });
+    // Redirecionar para área de aprendizado
+    const aprendizadoBtn = document.getElementById("aprendizado-btn");
+    aprendizadoBtn.addEventListener("click", () => {
+      window.location.href = "aprendizado_baixo.html";
     });
 
-    document.getElementById('sendBtn').addEventListener('click', () => {
-      const input = document.getElementById('userInput');
-      const chat = document.getElementById('chat');
-      const userText = input.value.trim();
-      if (userText) {
-        const userMsg = document.createElement('p');
-        userMsg.innerHTML = `<strong>Tu:</strong> ${userText}`;
-        chat.appendChild(userMsg);
-
-        const iaMsg = document.createElement('p');
-        iaMsg.classList.add('resposta');
-        iaMsg.innerHTML = `<strong>IA:</strong> Excelente! Vamos sentir o groove juntos 🎸`;
-        chat.appendChild(iaMsg);
-        input.value = '';
-        chat.scrollTop = chat.scrollHeight;
-      }
-    });
+    // Contato pelo Instagram
+    const contatoBtn = document.getElementById("contato-instagram");
+    if (contatoBtn) {
+      contatoBtn.addEventListener("click", () => {
+        window.open("https://instagram.com/021__xavier", "_blank");
+      });
+    }
   </script>
+
 </body>
 </html>

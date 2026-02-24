@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 dotenv.config();
 
 const API_KEY = process.env.GOOGLE_API_KEY;
-const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 export async function ClientGemini(prompt) {
   try {
@@ -16,13 +16,17 @@ export async function ClientGemini(prompt) {
       body: JSON.stringify({
         contents: [
           {
-            parts: [{ text: prompt }],
-          },
-        ],
+            parts: [
+              { text: prompt }
+            ]
+          }
+        ]
       }),
     });
 
     const data = await response.json();
+
+    console.log("Resposta completa do Gemini:", JSON.stringify(data, null, 2));
 
     if (!response.ok) {
       console.error("Erro da API:", data);
@@ -31,6 +35,7 @@ export async function ClientGemini(prompt) {
 
     // Extrai o texto da resposta
     const output = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta do modelo.";
+
     return output;
 
   } catch (error) {

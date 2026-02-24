@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área de Aprendizado - Bateria</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+
+    .video-item {
+      flex: 1 1 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+
+
+    }
+
+    .video-item video {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    section h2 {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>🎵 Clave&Coda music</h1>
+    <ul>
+      <li><a href="bateria.html">Voltar à Bateria</a></li>
+      <li><a href="index.html">Início</a></li>
+    </ul>
+  </nav>
+    <section class="progresso-section">
+  <h3>📈 Progresso na Bateria</h3>
+  <div class="barra-progresso">
+    <div class="barra-preenchida" id="barraProgresso"></div>
+  </div>
+  <p id="textoProgresso">0% concluído</p>
+</section>
+
+<main>
+  <!-- Princípios na Bateria -->
+  <section id="inicio-section">
+    <h2>Princípios na Bateria</h2>
+    <div class="video-list">
+      <div class="video-item">
+        <video src="videos/apresentacao_bateria.mp4" controls></video>
+        <p>Bateria</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+
+      </div>
+      <div class="video-item">
+        <video src="videos/segurar_baqueta.mp4" controls></video>
+        <p>Baquetas</p>
+      </div>
+      <div class="video-item">
+        <video src="videos/Postura.mp4" controls></video>
+        <p>Postura</p>
+      </div>
+       <div class="video-item">
+        <video src="coordenação.mp4" controls></video>
+        <p>Coordenação</p>
+      </div>
+      </div>
+  </section>
+
+  <!-- Rudimentos -->
+  <section id="rudimentos-section">
+    <h2>Rudimentos</h2>
+    <div class="video-list">
+      <div class="video-item">
+        <video src="videos/rudimento_single.mp4" controls></video>
+        <p>Rudimento 1: Single</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/rudimento_double.mp4" controls></video>
+        <p>Rudimento 2: Double</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/rudimento_papamama.mp4" controls></video>
+        <p>Rudimento 3: Papa-Mama</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/rudimento_paradiddle.mp4" controls></video>
+        <p>Rudimento 4: Paradiddle</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/rudimento_Flan.mp4" controls></video>
+        <p>Rudimento 5: Flan</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ritmos -->
+  <section id="ritmos-section">
+    <h2>Ritmos da Bateria</h2>
+    <div class="video-list">
+      <div class="video-item">
+        <video src="videos/ritmo1.mp4" controls></video>
+        <p>Ritmo 1: Rock Básico</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/ritmo2.mp4" controls></video>
+        <p>Ritmo 2: Funk</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/ritmo3.mp4" controls></video>
+        <p>Ritmo 3: Gospel</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/ritmo4.mp4" controls></video>
+        <p>Ritmo 4: Samba</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/ritmo5.mp4" controls></video>
+        <p>Ritmo 5: Pagode</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+    </div>
+  </section>
+    <!-- Ritmos -->
+  <section id="virada-section">
+    <h2>Viradas na Bateria</h2>
+    <div class="video-list">
+      <div class="video-item">
+        <video src="videos/virada1.mp4" controls></video>
+        <p>Virada 1: virada Básica</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/virada2.mp4" controls></video>
+        <p>Virada 2: Virada com bumbo</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/virada3.mp4" controls></video>
+        <p>Virada 3: Usando gospel chops</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/virada4.mp4" controls></video>
+        <p>Virada 4: Combina com tudo</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+      <div class="video-item">
+        <video src="videos/virada5.mp4" controls></video>
+        <p>Virada 5: Para terminar</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  const checks = document.querySelectorAll('.check-aula');
+  const barra = document.getElementById('barraProgresso');
+  const texto = document.getElementById('textoProgresso');
+
+  function atualizarProgresso() {
+    const total = checks.length;
+    const concluidas = document.querySelectorAll('.check-aula:checked').length;
+    const percentagem = Math.round((concluidas / total) * 100);
+
+    barra.style.width = percentagem + '%';
+    texto.textContent = percentagem + '% concluído';
+
+    // guardar progresso
+    localStorage.setItem('progresso_bateria', concluidas);
+  }
+
+  // carregar progresso guardado
+  const progressoSalvo = localStorage.getItem('progresso_bateria');
+  if (progressoSalvo) {
+    checks.forEach((check, index) => {
+      if (index < progressoSalvo) check.checked = true;
+    });
+  }
+
+  atualizarProgresso();
+
+  checks.forEach(check => {
+    check.addEventListener('change', atualizarProgresso);
+  });
+</script>
+
+
+
+
+  <footer>
+    <p>© 2025 Clave&Coda music — Desenvolvido por João Xavier 🎶</p>
+  </footer>
+</body>
+</html>

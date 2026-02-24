@@ -6,11 +6,55 @@
   <title>Bateria - Primeiros Passos</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a2d9d5a64f.js" crossorigin="anonymous"></script>
+  <style>
+    /* Estilo básico do chat e loading */
+    .resposta.loading::after {
+      content: ' ⏳';
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    #chat p {
+      margin: 5px 0;
+    }
+
+    #chat {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #111;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .area-buttons {
+      margin: 20px 0;
+    }
+
+    .area-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+    }
+
+    .area-buttons button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 
 <body>
-  <nav>
-    <h1>🎵 Música & IA</h1>
+  <nav class="navbar">
+    <h1>🎵 Clave&Coda music</h1>
     <ul>
       <li><a href="index.html">Início</a></li>
     </ul>
@@ -26,7 +70,11 @@
       <div class="video-box">
         <video src="videos/bateria.mp4" controls></video>
       </div>
-      <button id="start-btn">🎶 Vamos começar</button>
+      <button id="start-btn">🎶 Falar com o SoundIA</button>
+
+      <div class="area-buttons">
+        <button id="aprendizado-btn">📚 Ir para Área de Aprendizado</button>
+      </div>
     </div>
 
     <div class="text-column">
@@ -42,12 +90,28 @@
     <input type="text" id="userInput" placeholder="Escreve algo...">
     <button id="sendBtn">Enviar</button>
   </section>
+      <button class="contato-btn" id="contato-instagram">tenha feedback com o criador!</button>
 
   <footer>
-    <p>© 2025 Música & IA — Desenvolvido com paixão 🎶</p>
+    <p>© 2025 Clave&Coda music — Desenvolvido por João Xavier 🎶</p>
   </footer>
 
-  <!-- Script externo -->
   <script src="script.js"></script>
+  <script>
+    // Botão para ir para a área de aprendizado
+    const aprendizadoBtn = document.getElementById('aprendizado-btn');
+    aprendizadoBtn.addEventListener('click', () => {
+      window.location.href = "aprendizado_bateria.html";
+    });
+
+    const contatoBtn = document.getElementById("contato-instagram");
+if (contatoBtn) {
+  contatoBtn.addEventListener("click", () => {
+    window.open("https://instagram.com/021__xavier", "_blank");
+  });
+}
+
+
+  </script>
 </body>
 </html>

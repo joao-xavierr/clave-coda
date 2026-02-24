@@ -1,0 +1,113 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #111;
+  color: white;
+}
+
+/* Hero section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 20px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  padding: 15px 35px;
+  background: #ffb703;
+  color: black;
+  border-radius: 8px;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: #ffd86b;
+}
+
+/* Cards */
+.instrumentos {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #222;
+  padding: 25px;
+  width: 260px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: white;
+  border: 2px solid #333;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #333;
+  border-color: #ffb703;
+}
+
+/* Contact */
+.contact {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.insta-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #e1306c;
+  padding: 12px 28px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.insta-btn:hover {
+  background: #ff4f87;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
