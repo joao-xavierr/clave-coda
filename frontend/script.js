@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const loadingMsg = addMensagem('SoundIA 🧠', 'Pensando...', 'resposta loading');
 
       try {
-        const resposta = await fetch('http://localhost:3000/api/gemini', {
+        const resposta = await fetch('https://clave-coda-api.onrender.com/api/gemini', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: userText })
@@ -130,10 +130,5 @@ function verResultado() {
     </div>
   `;
 
-
-  // =====bateria=====
-  document.getElementById("contato-instagram").addEventListener("click", () => {
-  window.open("https://instagram.com/SEU_USUARIO", "_blank");
-});
 
 }
