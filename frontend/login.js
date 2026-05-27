@@ -46,9 +46,9 @@ form.addEventListener("submit", function (e) {
     const senha = document.getElementById("senha").value;
 
     // Escolhe o endpoint da API conforme o modo atual.
-    const url = modoRegistro
-        ? "http://localhost:3000/api/register"
-        : "http://localhost:3000/api/login";
+const url = modoRegistro
+    ? "https://clave-coda-api.onrender.com/api/register"
+    : "https://clave-coda-api.onrender.com/api/login";
 
     // Envia os dados para o servidor em formato JSON.
     fetch(url, {
