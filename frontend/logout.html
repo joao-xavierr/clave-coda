@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout - Clave&Coda</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(120deg, #1a1a1a, #2e2e2e);
+      color: #ffffff;
+    }
+
+    .logout-card {
+      width: 100%;
+      max-width: 420px;
+      background: #111111;
+      border: 1px solid rgba(255, 215, 0, 0.18);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .logout-card h1 {
+      margin: 0 0 12px;
+      color: #FFD700;
+    }
+
+    .logout-card p {
+      margin: 0;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+
+    .logout-card a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="logout-card">
+    <h1>A terminar sessao</h1>
+    <p>Estamos a encerrar a tua sessao e a redirecionar-te para a pagina de login.</p>
+    <a href="login.html">Voltar agora</a>
+  </div>
+
+  <script>
+    localStorage.removeItem("clavecodaUtilizador");
+    setTimeout(() => {
+      window.location.replace("login.html");
+    }, 800);
+  </script>
+</body>
+</html>

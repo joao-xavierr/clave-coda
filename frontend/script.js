@@ -1,5 +1,13 @@
 console.log("Script carregado com sucesso!");
 
+// Nome da chave usada para guardar a sessao simples no navegador.
+const chaveSessao = "clavecodaUtilizador";
+
+// Protege a pagina inicial para que apenas utilizadores com sessao entrem.
+if (!localStorage.getItem(chaveSessao)) {
+  window.location.replace("login.html");
+}
+
 // =====================
 // CHAT DA IA
 // =====================

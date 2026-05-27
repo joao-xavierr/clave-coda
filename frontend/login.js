@@ -1,56 +1,104 @@
+// Procura no HTML o formulario principal de login/registo.
 const form = document.getElementById("loginForm");
+
+// Procura o elemento onde vamos mostrar mensagens ao utilizador.
 const mensagem = document.getElementById("mensagem");
+
+// Procura o botao que ativa o modo de registo.
 const registrarBtn = document.getElementById("registrarBtn");
 
-let modoRegistro = false; // falso = login, true = registrar
+// Controla se o formulario esta em modo de login ou de registo.
+// false = login
+// true = registo
+let modoRegistro = false;
 
-// Ao clicar em "Registrar", muda para modo registro
+// Nome da chave usada para guardar a sessao no navegador.
+const chaveSessao = "clavecodaUtilizador";
+
+// Limpa todos os campos do formulario.
+function limparCampos() {
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("senha").value = "";
+}
+
+// Quando o utilizador clica em "Registrar", ativamos o modo de registo.
 registrarBtn.addEventListener("click", () => {
+    // Passa o formulario para modo de registo.
     modoRegistro = true;
-    mensagem.style.color = "#ff0000ff";
-    mensagem.textContent = "registro confirmado!!";
+
+    // Limpa os campos para o utilizador comecar o registo do zero.
+    limparCampos();
+
+    // Mostra uma mensagem visual a confirmar a mudanca de modo.
+    mensagem.style.color = "#ffd700";
+    mensagem.textContent = "Modo de registo ativado.";
 });
 
-// LOGIN ou REGISTRO
+// Quando o formulario e enviado, tratamos login ou registo.
 form.addEventListener("submit", function (e) {
+    // Impede o recarregamento automatico da pagina.
     e.preventDefault();
 
+    // Vai buscar os valores escritos pelo utilizador.
     const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
 
+    // Escolhe o endpoint da API conforme o modo atual.
+    const url = modoRegistro
+        ? "http://localhost:3000/api/register"
+        : "http://localhost:3000/api/login";
 
-const url = modoRegistro
-? "http://localhost:3000/api/register"
-: "http://localhost:3000/api/login";
-
-
+    // Envia os dados para o servidor em formato JSON.
     fetch(url, {
         method: "POST",
-        headers: {  
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ nome, email, senha })
     })
+    // Converte a resposta do servidor para JSON.
     .then(res => res.json())
     .then(data => {
+        // Se o servidor indicar sucesso, mostramos mensagem positiva.
         if (data.success) {
             mensagem.style.color = "green";
             mensagem.textContent = modoRegistro
-                ? "Registro realizado com sucesso!."
+                ? "Registro realizado com sucesso!"
                 : "Login realizado com sucesso!";
-            modoRegistro = false; // volta ao login
+
+            // Se foi um registo, limpa os campos apos concluir.
+            if (modoRegistro) {
+                limparCampos();
+            }
+
+            // Se foi login, guarda uma sessao simples no navegador.
             if (!modoRegistro) {
+                localStorage.setItem(chaveSessao, JSON.stringify({
+                    nome,
+                    email,
+                    loginEm: new Date().toISOString()
+                }));
+
+                // Redireciona para a pagina inicial apos um pequeno atraso.
                 setTimeout(() => {
                     window.location.replace("index.html");
                 }, 1000);
+            } else {
+                // Depois de registar, voltamos o sistema para modo de login.
+                modoRegistro = false;
+                mensagem.style.color = "#ffd700";
+                mensagem.textContent = "Conta criada. Agora faz login com os teus dados.";
             }
         } else {
+            // Se o servidor devolver erro, mostramos a mensagem correspondente.
             mensagem.style.color = "red";
-            mensagem.textContent = data.message || (modoRegistro ? "Registro inválido" : "Login inválido");
+            mensagem.textContent = data.message || (modoRegistro ? "Registro invalido" : "Login invalido");
         }
     })
     .catch(() => {
+        // Se houver falha de ligacao com o servidor, mostramos erro generico.
         mensagem.style.color = "red";
         mensagem.textContent = "Erro ao conectar com o servidor";
     });

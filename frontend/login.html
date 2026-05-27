@@ -2,21 +2,245 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Entrar — Clave&Coda</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar - Clave&Coda</title>
+
+  <style>
+    /*  Aqui coloquei essas variaveis de cor para manter o visual alinhado com o resto do site */
+    :root {
+      --bg-main: #1a1a1a;
+      --bg-panel: rgba(17, 17, 17, 0.92);
+      --bg-field: rgba(34, 34, 34, 0.95);
+      --text-main: #ffffff;
+      --text-soft: #d1d5db;
+      --accent: #ffd700;
+      --accent-hover: #ffdb4d;
+      --border: rgba(255, 215, 0, 0.18);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+      --overlay: rgba(0, 0, 0, 0.55);
+    }
+
+    /* Garante que todos os elementos tenham os mesmos tamanhos e espacamentos */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Define o fundo geral da pagina e centraliza a parte de de login */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url("../imagens_videos/logo_site-removebg-preview.png") center/420px no-repeat,
+        linear-gradient(120deg, #1a1a1a, #2e2e2e);
+    }
+
+    /* Caixa principal do formulario */
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Parte do titulo e subtitulo */
+    .login-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* Titulo principal */
+    .login-header h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    /* Texto de apoio abaixo do titulo */
+    .login-header p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.5;
+      font-size: 0.96rem;
+    }
+
+    /* Organiza os campos do formulario em coluna */
+    #loginForm {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Agrupa o label e o input do mesmo campo */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    /* Estilo dos nomes dos campos */
+    .input-group label {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    /* Estilo dos campos onde o utilizador escreve */
+    .input-group input {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: var(--bg-field);
+      color: var(--text-main);
+      font-size: 0.96rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Cor do texto de exemplo dentro dos inputs */
+    .input-group input::placeholder {
+      color: #9ca3af;
+    }
+
+    /* Destaque visual quando o utilizador clica no campo */
+    .input-group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12);
+    }
+
+    /* Agrupa os botoes do formulario */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    /* Estilo base dos botoes */
+    .button-group button {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-size: 0.97rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    /* Botao principal para entrar */
+    .primary-btn {
+      border: none;
+      background: var(--accent);
+      color: #111111;
+    }
+
+    /* Efeito ao passar o rato no botao principal */
+    .primary-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Botao secundario para mudar para modo de registo */
+    .secondary-btn {
+      border: 1px solid #3a3a3a;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    /* Efeito ao passar o rato no botao secundario */
+    .secondary-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Area onde aparecem as mensagens de erro ou sucesso */
+    #mensagem {
+      min-height: 24px;
+      margin: 18px 0 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Ajustes para ecras pequenos */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+        background:
+          linear-gradient(var(--overlay), var(--overlay)),
+          url("../imagens_videos/logo_site-removebg-preview.png") center/280px no-repeat,
+          linear-gradient(120deg, #1a1a1a, #2e2e2e);
+      }
+
+      .login-container {
+        padding: 28px 20px; /* Aumenta o espaco interno */
+      }
+
+      .login-header h1 {
+        font-size: 1.7rem; /* Aumenta o tamanho do titulo */
+      }
+    }
+        /* Imagem de fundo com efeito de desfoque */
+          body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px);
+        transform: scale(1.1);
+        z-index: -1;
+      }
+  </style>
+  
 </head>
 <body>
-
+  <!-- Cartao central que contem toda a area de login -->
   <div class="login-container">
-    <h2>Entrar na Clave&Coda</h2>
+    <!-- Cabecalho visual do formulario-->
+    <div class="login-header">
+      <h1>Clave&Coda</h1>
+      <p>Entra na tua conta para continuar a tua aprendizagem musical.</p>
+    </div>
 
+    <!-- Formulario principal usado tanto para login como para registo -->
     <form id="loginForm">
-      <input type="text" id="nome" placeholder="Nome" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="senha" placeholder="Senha" required>
+      <!-- Campo do nome -->
+      <div class="input-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Digite o seu nome" required>
+      </div>
 
-      <button type="submit">Entrar</button>
-      <button type="button" id="registrarBtn">Registrar</button>
+      <!-- Campo do email -->
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite o seu email" required>
+      </div>
+
+      <!-- Campo da senha -->
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite a sua senha" required>
+      </div>
+
+      <!-- Botoes de acao do formulario -->
+      <div class="button-group">
+        <button type="submit" class="primary-btn">Entrar</button>
+        <button type="button" id="registrarBtn" class="secondary-btn">Registrar</button>
+      </div>
     </form>
 
     <p id="mensagem"></p>
