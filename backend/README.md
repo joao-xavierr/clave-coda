@@ -10,14 +10,17 @@ Este projeto é um site desenvolvido para a Prova de Aptidão Profissional (PAP)
   .\.venv\Scripts\Activate.ps1
 
 Bibliotecas e Extensões
-SQLite Viewer: Extensão instalada no VS Code para visualizar os dados do arquivo usuarios.db diretamente no editor, sem a necessidade de programas externos.
+SQLite Viewer: 
+Extensão instalada no VS Code para visualizar os dados do arquivo usuarios.db diretamente no editor, sem a necessidade de programas externos.
 
-Bibliotecas Python: Todas as dependências necessárias estão listadas no arquivo requirements.txt.
+Bibliotecas Python: 
+Todas as dependências necessárias estão listadas no arquivo requirements.txt.
 
 Banco de Dados
 O banco de dados utilizado no projeto é o SQLite.
 
-Arquivo: usuarios.db
+Arquivo: 
+usuarios.db
 
 Como visualizar: Basta clicar no arquivo dentro do VS Code (após instalar a extensão citada acima) para ver as tabelas.
 
