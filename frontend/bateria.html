@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a2d9d5a64f.js" crossorigin="anonymous"></script>
   <style>
-    /* Estilo básico do chat e loading */
     .resposta.loading::after {
       content: ' ⏳';
       animation: blink 1s infinite;
@@ -49,6 +48,12 @@
     .area-buttons button:hover {
       background-color: #218838;
     }
+
+    .video-box iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -69,7 +74,7 @@
   <main class="main-content">
     <div class="video-column">
       <div class="video-box">
-        <video src="videos/bateria.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_APRESENTACAO_BATERIA" frameborder="0" allowfullscreen></iframe>
       </div>
       <button id="start-btn">🎶 Falar com o SoundIA</button>
 

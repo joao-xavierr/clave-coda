@@ -8,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      .video-box iframe {
+        width: 100%;
+        height: 220px;
+        border-radius: 8px;
+      }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -36,9 +43,9 @@
 
         <!-- Coluna de vídeos -->
         <div class="video-column">
-            <div class="video-box"><video controls><source src="video1.mp4" type="video/mp4"></video></div>
-            <div class="video-box"><video controls><source src="video2.mp4" type="video/mp4"></video></div>
-            <div class="video-box"><video controls><source src="video3.mp4" type="video/mp4"></video></div>
+            <div class="video-box"><iframe src="https://www.youtube.com/embed/ID_VIDEO1" frameborder="0" allowfullscreen></iframe></div>
+            <div class="video-box"><iframe src="https://www.youtube.com/embed/ID_VIDEO2" frameborder="0" allowfullscreen></iframe></div>
+            <div class="video-box"><iframe src="https://www.youtube.com/embed/ID_VIDEO3" frameborder="0" allowfullscreen></iframe></div>
         </div>
 
         <!-- Coluna de texto e botões -->
