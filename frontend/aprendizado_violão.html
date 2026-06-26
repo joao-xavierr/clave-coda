@@ -21,8 +21,9 @@
       border-radius: 8px;
     }
 
-    .video-item video {
+    .video-item iframe {
       width: 100%;
+      height: 200px;
       border-radius: 6px;
     }
 
@@ -52,6 +53,13 @@
       <li><a href="index.html">Início</a></li>
     </ul>
   </nav>
+    <section class="progresso-section">
+  <h3>📈 Progresso no Violão</h3>
+  <div class="barra-progresso">
+    <div class="barra-preenchida" id="barraProgresso"></div>
+  </div>
+  <p id="textoProgresso">0% concluído</p>
+</section>
 
 <main>
   <!-- Princípios na guitarra acústica -->
@@ -59,16 +67,28 @@
     <h2>Princípios no violão</h2>
     <div class="video-list">
       <div class="video-item">
-        <video src="videos/apresentacao_violão.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_APRESENTACAO" frameborder="0" allowfullscreen></iframe>
         <p>Violão</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/Postura.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_POSTURA" frameborder="0" allowfullscreen></iframe>
         <p>Postura</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
        <div class="video-item">
-        <video src="coordenação.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_COORDENACAO" frameborder="0" allowfullscreen></iframe>
         <p>Coordenação</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       </div>
   </section>
@@ -78,24 +98,44 @@
     <h2>Exercícios</h2>
     <div class="video-list">
       <div class="video-item">
-        <video src="videos/acordes simples.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_ACORDES_SIMPLES" frameborder="0" allowfullscreen></iframe>
         <p>Exercício 1: Acordes simples</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/coordenação1.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_COORDENACAO1" frameborder="0" allowfullscreen></iframe>
         <p>Exercício 2: exercicios de coordenação</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/coordenação2.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_COORDENACAO2" frameborder="0" allowfullscreen></iframe>
         <p>Exercício 3: mais exercicios de coordenação</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/dedilhado.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_DEDILHADO" frameborder="0" allowfullscreen></iframe>
         <p>Exercício 4: inicio do dedilhado</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/exercicio pestana.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_PESTANA" frameborder="0" allowfullscreen></iframe>
         <p>Exercício 5: força pra pestana</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
     </div>
   </section>
@@ -105,24 +145,44 @@
     <h2>Ritmos no violão</h2>
     <div class="video-list">
       <div class="video-item">
-        <video src="videos/ritmo1.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_RITMO1" frameborder="0" allowfullscreen></iframe>
         <p>Ritmo 1: Dedilhado</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/ritmo2.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_RITMO2" frameborder="0" allowfullscreen></iframe>
         <p>Ritmo 2: Reggae</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/ritmo3.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_RITMO3" frameborder="0" allowfullscreen></iframe>
         <p>Ritmo 3: Worship</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/ritmo4.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_RITMO4" frameborder="0" allowfullscreen></iframe>
         <p>Ritmo 4: Samba</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/ritmo5.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_RITMO5" frameborder="0" allowfullscreen></iframe>
         <p>Ritmo 5: Pagode</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
     </div>
   </section>
@@ -131,28 +191,79 @@
     <h2>Frases no violão</h2>
     <div class="video-list">
       <div class="video-item">
-        <video src="videos/virada1.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_VIRADA1" frameborder="0" allowfullscreen></iframe>
         <p>Frase 1: virada Básica</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/virada2.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_VIRADA2" frameborder="0" allowfullscreen></iframe>
         <p>Frase 2: Virada com bumbo</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/virada3.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_VIRADA3" frameborder="0" allowfullscreen></iframe>
         <p>Frase 3: Usando gospel chops</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/virada4.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_VIRADA4" frameborder="0" allowfullscreen></iframe>
         <p>Frase 4: Combina com tudo</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
       <div class="video-item">
-        <video src="videos/virada5.mp4" controls></video>
+        <iframe src="https://www.youtube.com/embed/ID_VIRADA5" frameborder="0" allowfullscreen></iframe>
         <p>Frase 5: Para terminar</p>
+        <label class="concluido">
+  <input type="checkbox" class="check-aula">
+  Aula concluída
+</label>
       </div>
     </div>
   </section>
 </main>
+<script>
+  const checks = document.querySelectorAll('.check-aula');
+  const barra = document.getElementById('barraProgresso');
+  const texto = document.getElementById('textoProgresso');
+
+  function atualizarProgresso() {
+    const total = checks.length;
+    const concluidas = document.querySelectorAll('.check-aula:checked').length;
+    const percentagem = Math.round((concluidas / total) * 100);
+
+    barra.style.width = percentagem + '%';
+    texto.textContent = percentagem + '% concluído';
+
+    // guardar progresso
+    localStorage.setItem('progresso_violao', concluidas);
+  }
+
+  // carregar progresso guardado
+  const progressoSalvo = localStorage.getItem('progresso_violao');
+  if (progressoSalvo) {
+    checks.forEach((check, index) => {
+      if (index < progressoSalvo) check.checked = true;
+    });
+  }
+
+  atualizarProgresso();
+
+  checks.forEach(check => {
+    check.addEventListener('change', atualizarProgresso);
+  });
+</script>
 
 
 

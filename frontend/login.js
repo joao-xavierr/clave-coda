@@ -73,9 +73,9 @@ const url = modoRegistro
                 limparCampos();
             }
 
-            // Se foi login, guarda uma sessao simples no navegador.
-            if (!modoRegistro) {
-                localStorage.setItem(chaveSessao, JSON.stringify({
+            // Se foi login, guardamos a sessao no navegador.
+            if (!modoRegistro) { // aqui eu usei o "!" para verificar se não é modo de registro, ou seja, é modo de login
+                localStorage.setItem(chaveSessao, JSON.stringify({ 
                     nome,
                     email,
                     loginEm: new Date().toISOString()
