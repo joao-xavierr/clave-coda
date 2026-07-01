@@ -81,7 +81,7 @@ app.post("/api/gemini", async (req, res) => {
     res.json({ resposta });
   } catch (error) {
     console.error("Erro ao processar solicitação:", error);
-    res.status(500).json({ error: "Erro ao processar a solicitação." });
+    res.status(500).json({ error: "Erro ao processar a solicitação." }); /*aqui é o erro que vai aparecer no console do servidor, caso haja algum erro na requisição*/
   }
 });
 
