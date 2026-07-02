@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendBtn = document.getElementById('sendBtn');
   const input = document.getElementById('userInput');
   const chat = document.getElementById('chat');
+  const aprendizadoBtn = document.getElementById('aprendizado-btn');
+
+  // Movido para fora do fetch para funcionar corretamente logo ao carregar a página
+  if (aprendizadoBtn) {
+    aprendizadoBtn.addEventListener('click', () => {
+      window.location.href = "aprendizado_bateria.html"; 
+    });
+  }
 
   function addMensagem(remetente, texto, classes) {
     const msg = document.createElement('p');
@@ -54,12 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ prompt: userText })
         });
 
-        const aprendizadoBtn = document.getElementById('aprendizado-btn');
-aprendizadoBtn.addEventListener('click', () => {
-  window.location.href = "aprendizado_bateria.html"; // redireciona para a nova página
-});
-
-
         const data = await resposta.json();
         const textoResposta = data.resposta || "Sem resposta do modelo.";
 
@@ -83,52 +85,56 @@ aprendizadoBtn.addEventListener('click', () => {
   }
 });
 
-// =====================
-// QUIZ
-// =====================
+
+// QUIZ //
 function verResultado() {
-  const form = document.getElementById("quizForm");
-
-  const respostas = {
-    q1: form.q1.value,
-    q2: form.q2.value,
-    q3: form.q3.value,
-    q4: form.q4.value,
-    q5: form.q5.value,
-    q6: form.q6.value,
-    q7: form.q7.value
+  let pontos = { 
+    "bateria": 0, 
+    "guitarra acustica": 0, 
+    "baixo": 0 
   };
+  
+  let totalPerguntas = 7;
+  let respondeuTodas = true;
 
-  // Checa se todas as perguntas foram respondidas
-  const totalRespondidas = Object.values(respostas).filter(r => r !== "").length;
-  if (totalRespondidas < 7) {
-    document.getElementById("resultadoQuiz").innerHTML = "<p>⚠️ Por favor, responda todas as perguntas!</p>";
+  for (let i = 1; i <= totalPerguntas; i++) {
+    let opcaoSelecionada = document.querySelector(`input[name="q${i}"]:checked`);
+    
+    if (opcaoSelecionada) {
+      let valor = opcaoSelecionada.value;
+      if (pontos[valor] !== undefined) {
+        pontos[valor]++;
+      }
+    } else {
+      respondeuTodas = false;
+    }
+  }
+
+  if (!respondeuTodas) {
+    const divResultado = document.getElementById("resultadoQuiz");
+    divResultado.innerHTML = "<p style='color: #ff3333; font-weight: bold;'>⚠️ Por favor, responde a todas as perguntas para veres o teu resultado!</p>";
+    divResultado.style.display = "block";
     return;
   }
 
-  let pontos = { bateria: 0, violao: 0, baixo: 0 };
-  for (let chave in respostas) {
-    if (respostas[chave]) pontos[respostas[chave]]++;
-  }
-
-  const instrumento = Object.keys(pontos).reduce((a, b) =>
+  const instrumentoVencedor = Object.keys(pontos).reduce((a, b) =>
     pontos[a] > pontos[b] ? a : b
   );
 
   let mensagem = "";
-  if (instrumento === "bateria") {
-    mensagem = "🥁 Você combina com a <b>Bateria</b>! Gosta de ritmo e energia!";
-  } else if (instrumento === "violao") {
-    mensagem = "🎸 Você combina com o <b>Violão</b>! Calmo, melódico e expressivo.";
-  } else if (instrumento === "baixo") {
-    mensagem = "🎶 Você combina com o <b>Baixo</b>! Equilibrado e com ótima noção de harmonia.";
+  if (instrumentoVencedor === "bateria") {
+    mensagem = "🥁 Combinais com a <strong>Bateria</strong>!";
+  } else if (instrumentoVencedor === "guitarra acustica") {
+    mensagem = "🎸 Combinais com a <strong>Guitarra Acústica</strong>!";
+  } else if (instrumentoVencedor === "baixo") {
+    mensagem = "🎶 Combinais com o <strong>Baixo</strong>!";
   }
 
-  document.getElementById("resultadoQuiz").innerHTML = `
+  const divResultado = document.getElementById("resultadoQuiz");
+  divResultado.innerHTML = `
     <div class="resultado-final">
-      <h3>${mensagem}</h3>
+      <p>${mensagem}</p>
     </div>
   `;
-
-
+  divResultado.style.display = "block";
 }
