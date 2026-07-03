@@ -21,10 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Movido para fora do fetch para funcionar corretamente logo ao carregar a página
   if (aprendizadoBtn) {
-    aprendizadoBtn.addEventListener('click', () => {
-      window.location.href = "aprendizado_bateria.html"; 
-    });
-  }
+  aprendizadoBtn.addEventListener('click', () => {
+    const pagina = document.body.dataset.pagina;
+    if (pagina === 'bateria') {
+      window.location.href = "aprendizado_bateria.html";
+    } else if (pagina === 'violao') {
+      window.location.href = "aprendizado_violão.html";
+    } else if (pagina === 'baixo') {
+      window.location.href = "aprendizado_baixo.html";
+    }
+  });
+}
 
   function addMensagem(remetente, texto, classes) {
     const msg = document.createElement('p');
